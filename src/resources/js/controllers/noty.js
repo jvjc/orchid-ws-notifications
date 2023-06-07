@@ -2,6 +2,13 @@ export default class extends window.Controller {
     static targets = ["status"]
     static values = { endpoint: String }
 
+    triggerEvent(eventName, detail) {
+        const event = new CustomEvent(eventName, {
+            detail: detail
+        })
+        document.querySelector('body').dispatchEvent(event)
+    }
+
     showToast(config = {}) {
         const toastHeader = `<div class="toast-header">
             <strong class="me-auto">${config.title}</strong>
@@ -46,17 +53,14 @@ export default class extends window.Controller {
                     }
                 } else if (payload.action === 'event') {
                     buttonElement.onclick = () => {
-                        const event = new CustomEvent(payload.event, {
-                            detail: payload.detail
-                        })
-                        document.querySelector('body').dispatchEvent(event)
-                    };
+                        this.triggerEvent(payload.event, payload.detail)
+                    }
                 }
 
                 buttonElement.textContent = payload.text
 
                 toastActions.append(buttonElement)
-            });
+            })
 
             container.querySelector('.toast-body').append(toastActions)
         }
@@ -94,7 +98,9 @@ export default class extends window.Controller {
                 const { type, payload } = JSON.parse(event.data)
 
                 if (type === 'notification') {
-                    this.showToast(payload);
+                    this.showToast(payload)
+                } else if (type === 'event') {
+                    this.triggerEvent(payload.event, payload.detail)
                 }
             } catch (e) {}
         }
