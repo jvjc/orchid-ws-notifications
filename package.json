@@ -1,0 +1,16 @@
+{
+  "name": "websocket-notifications",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.mix.js",
+  "scripts": {
+    "dev": "mix",
+    "build": "mix --production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "laravel-mix": "^6.0.49"
+  }
+}

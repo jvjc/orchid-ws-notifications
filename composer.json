@@ -1,0 +1,23 @@
+{
+    "name": "victor/websocket-notifications",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Victor\\WebsocketNotification\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan Víctor Jiménez Corzo",
+            "email": "corzo@outlook.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Victor\\WebsocketNotification\\Providers\\FoundationServiceProvider"
+            ]
+        }
+    }
+}
