@@ -100,7 +100,7 @@ export default class extends window.Controller {
                 if (type === 'notification') {
                     this.showToast(payload)
                 } else if (type === 'event') {
-                    this.triggerEvent(payload.event, payload.detail)
+                    this.triggerEvent(payload.name, payload.detail)
                 }
             } catch (e) {}
         }
